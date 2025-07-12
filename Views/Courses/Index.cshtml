@@ -9,34 +9,25 @@
 <p class="d-flex flex-row-reverse">
     <a asp-action="Create" class="btn btn-dark">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Code)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Credits)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="d-flex gap-2 flex-wrap align-items-center">
+
 @foreach (var item in Model) {
-        <tr>
-            <td>
+        <div class="card text-center" style="width:18rem;">
+            <div class="card-header">
+
+            <span class="text-primary lead fw-bolder">
                 @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Code)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Credits)
-            </td>
-            <td>
+            </span>
+            </div>
+            <div class="card-body">
+            <p>
+                Code: @Html.DisplayFor(modelItem => item.Code)
+            </p>
+
+            <p>
+                Credits: @Html.DisplayFor(modelItem => item.Credits)
+            </p>
+            <div >
                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">
                     
                     <i class="bi bi-pencil-square"></i>
@@ -47,8 +38,8 @@
                 <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
                     <i class="bi bi-trash"></i>
                 </a>
-            </td>
-        </tr>
+            </div>
+            </div>
+        </div>
 }
-    </tbody>
-</table>
+</div>
