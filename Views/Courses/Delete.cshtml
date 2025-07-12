@@ -13,26 +13,26 @@
     <div class="card">
         <div class="card-header text-center fw-bold lead text-primary">
 
-        <p class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </p>
+            <p class = "col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </p>
         </div>
         <div class="card-body lead">
 
-        <p class = "col-sm-10">
-            @Html.DisplayFor(model => model.Code)
-        </p>
-        <p class = "col-sm-10">
-            @Html.DisplayFor(model => model.Credits)
-        </p>
+            <p class = "col-sm-10">
+                @Html.DisplayFor(model => model.Code)
+            </p>
+            <p class = "col-sm-10">
+                @Html.DisplayFor(model => model.Credits)
+            </p>
         </div>
         <div class="card-footer d-flex justify-content-center gap-2">
 
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> 
-        <a asp-action="Index" class="btn btn-outline-primary">Back to List</a>
-    </form>
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Delete" class="btn btn-danger" /> 
+                <a asp-action="Index" class="btn btn-outline-primary">Back to List</a>
+            </form>
         </div>
     </div>
     
