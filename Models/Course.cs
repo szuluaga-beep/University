@@ -16,6 +16,8 @@ namespace University.Models
         [Range(0, 5, ErrorMessage = "Credits must be between {1} and {2}.")]
         public int Credits { get; set; }
 
+        public int DepartmentID { get; set; }
+
         public Department? Department { get; set; }
         public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
 
