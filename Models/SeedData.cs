@@ -35,20 +35,79 @@ namespace University.Models
                 }
                 context.SaveChanges();
 
+                var instructors = new Instructor[]
+                {
+                    new Instructor { FirstName = "Kim", LastName = "Abercrombie", HireDate = DateTime.Parse("1995-03-11") },
+                    new Instructor { FirstName = "Fadi", LastName = "Fakhouri", HireDate = DateTime.Parse("2002-07-06") },
+                };
+
+                foreach (Instructor i in instructors)
+                {
+                    context.Instructors.Add(i);
+                }
+                context.SaveChanges();
+
+                var departments = new Department[]
+                {
+                    new Department { Name = "English", Budget = 350000, StartDate = DateTime.Parse("2007-09-01"), InstructorID = instructors.Single(i => i.LastName == "Abercrombie").Id },
+                    new Department { Name = "Economics", Budget = 100000, StartDate = DateTime.Parse("2007-09-01"), InstructorID = instructors.Single(i => i.LastName == "Fakhouri").Id }
+                };
+
+                foreach (Department de in departments)
+                {
+                    context.Departments.Add(de);
+                }
+
+                context.SaveChanges();
+
+                var officeAssignments = new OfficeAssignment[]
+                {
+                    new OfficeAssignment {
+                        InstructorId = instructors.Single( i => i.LastName == "Fakhouri").Id,
+                        Location = "Smith 17" },
+                    new OfficeAssignment {
+                        InstructorId = instructors.Single( i => i.LastName == "Abercrombie").Id,
+                        Location = "Gowan 27" },
+                };
+
+                foreach (OfficeAssignment o in officeAssignments)
+                {
+                    context.OfficeAssignments.Add(o);
+                }
+                context.SaveChanges();
+
                 var courses = new Course[]
                 {
-                new Course { CourseID = 1050, Title = "Chemistry", Credits = 3 },
-                new Course { CourseID = 4022, Title = "Microeconomics", Credits = 3 },
-                new Course { CourseID = 4041, Title = "Macroeconomics", Credits = 3 },
-                new Course { CourseID = 1045, Title = "Calculus", Credits = 4 },
-                new Course { CourseID = 3141, Title = "Trigonometry", Credits = 4 },
-                new Course { CourseID = 2021, Title = "Composition", Credits = 3 },
-                new Course { CourseID = 2042, Title = "Literature", Credits = 4 }
+                    new Course { CourseID = 1050, Title = "Chemistry", Credits = 3 },
+                    new Course { CourseID = 4022, Title = "Microeconomics", Credits = 3 },
+                    new Course { CourseID = 4041, Title = "Macroeconomics", Credits = 3 },
+                    new Course { CourseID = 1045, Title = "Calculus", Credits = 4 },
+                    new Course { CourseID = 3141, Title = "Trigonometry", Credits = 4 },
+                    new Course { CourseID = 2021, Title = "Composition", Credits = 3 },
+                    new Course { CourseID = 2042, Title = "Literature", Credits = 4 }
                 };
 
                 foreach (Course c in courses)
                 {
                     context.Courses.Add(c);
+                }
+
+                context.SaveChanges();
+
+                var courseInstructors = new CourseAssigment[]
+                {
+                    new CourseAssigment { CourseID = 1050, InstructorID = instructors.Single(i => i.LastName == "Abercrombie").Id },
+                    new CourseAssigment { CourseID = 4022, InstructorID = instructors.Single(i => i.LastName == "Fakhouri").Id },
+                    new CourseAssigment { CourseID = 4041, InstructorID = instructors.Single(i => i.LastName == "Fakhouri").Id },
+                    new CourseAssigment { CourseID = 1045, InstructorID = instructors.Single(i => i.LastName == "Abercrombie").Id },
+                    new CourseAssigment { CourseID = 3141, InstructorID = instructors.Single(i => i.LastName == "Abercrombie").Id },
+                    new CourseAssigment { CourseID = 2021, InstructorID = instructors.Single(i => i.LastName == "Abercrombie").Id },
+                    new CourseAssigment { CourseID = 2042, InstructorID = instructors.Single(i => i.LastName == "Fakhouri").Id }
+                };
+
+                foreach (CourseAssigment ca in courseInstructors)
+                {
+                    context.CourseAssignments.Add(ca);
                 }
 
                 context.SaveChanges();

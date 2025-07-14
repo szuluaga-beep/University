@@ -2,35 +2,35 @@
 
 namespace University.Models
 {
-    public class Student
+    public class Instructor
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
+
+        [Required]
+        [Display(Name = "First name")]
+        [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 2)]
+        public string FirstName { get; set; } = null!;
 
         [Required]
         [Display(Name = "Last name")]
         [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 2)]
         public string LastName { get; set; } = null!;
 
-        [Required]
-        [Display(Name = "First name")]
-        [StringLength(50, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 2)]
-        public string FirstMidName { get; set; } = null!;
-
-        [Required]
+        [Display(Name = "Hire date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Entollment Data")]
-        public DateTime EnrollmentDate { get; set; }
+        public DateTime HireDate { get; set; }
 
         [Display(Name = "Full name")]
         public string FullName
         {
             get
             {
-                return $"{LastName}, {FirstMidName}";
+                return $"{LastName}, {FirstName}";
             }
         }
 
-        public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
+        public ICollection<CourseAssigment> CourseAssignments { get; set; } = new List<CourseAssigment>();
+        public OfficeAssignment OfficeAssignment { get; set; } = null!;
     }
 }
