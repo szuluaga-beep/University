@@ -7,13 +7,8 @@ using University.Models;
 
 namespace University.Data
 {
-    public class UniversityContext : DbContext
+    public class UniversityContext(DbContextOptions<UniversityContext> options) : DbContext(options)
     {
-        public UniversityContext(DbContextOptions<UniversityContext> options)
-            : base(options)
-        {
-        }
-
         public DbSet<Course> Courses { get; set; }
 
         public DbSet<Enrollment> Enrollments { get; set; }
